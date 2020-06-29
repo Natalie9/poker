@@ -124,9 +124,6 @@ export default {
       vencedor: null
     };
   },
-  computed:{
-
-  }
   methods: {
     putMaos: function() {
       axios.post("http://127.0.0.1:7000/index/", this.maos).then(comics => {
@@ -134,9 +131,6 @@ export default {
         console.log(this.vencedor);
       });
       this.alert = true;
-    },
-    checkValues: function(){
-
     }
   }
 };

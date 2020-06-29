@@ -9,7 +9,7 @@ services:
       - app-network
 
   webserver:
-    build: ./frontend
+    build: ./frontend/pokerAPP
     container_name: webserver
     command: npm run start
     ports:
