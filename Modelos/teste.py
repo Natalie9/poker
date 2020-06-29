@@ -101,11 +101,12 @@ def verifica_regras(mao):
     else:
         print('else')
         if mao['cartas_valor'][4][0] != 14 and mao['cartas_valor'][0][0] + 4 == mao['cartas_valor'][4][0]:
-                mao['tipo_mao'] = 'Sequencia'
-                mao['posicao'] = 6
+            mao['tipo_mao'] = 'Sequencia'
+            mao['posicao'] = 6
 
         ##caso seja sequencia de 2 3 4 5 e A valendo 1
-        elif mao['cartas_valor'][4][0] == 14 and mao['cartas_valor'][0][0] == 2 and mao['cartas_valor'][0][0] + 3 == mao['cartas_valor'][3][0]:
+        elif mao['cartas_valor'][4][0] == 14 and mao['cartas_valor'][0][0] == 2 and mao['cartas_valor'][0][0] + 3 == \
+                mao['cartas_valor'][3][0]:
             y = list(mao['cartas_valor'][4])
             y[0] = 1
             mao['cartas_valor'][4] = tuple(y)
@@ -158,7 +159,8 @@ def fazer_verficacao(mao):
         print(i['naipe'], i['valor'])
     print(mao_result['tipo_mao'])
     print(str(mao_result['posicao']) + '° colocação')
-    return  mao_result
+    return mao_result
+
 
 def desempate(mao1, mao2):
     regra = mao2['posicao']
@@ -195,28 +197,30 @@ def desempate(mao1, mao2):
             quadra2 = mao2['cartas_valor'][1][0]
             kicker2 = mao2['cartas_valor'][0][0]
 
-        if quadra1>quadra2:
+        if quadra1 > quadra2:
             return mao1
 
-        elif quadra2>quadra1:
+        elif quadra2 > quadra1:
             return mao2
 
         else:
-            if kicker1>kicker2:
+            if kicker1 > kicker2:
                 return mao1
-            elif kicker2>kicker1:
+            elif kicker2 > kicker1:
                 return mao2
             else:
                 print('empate total')
 
 
 def compara_maos(mao1, mao2):
+    import json
     if mao1['posicao'] < mao2['posicao']:
-        print('mao 1 venceu')
-        return 'Mão 1 venceu!'
+        maoT = {"title": "Mao 1", "vencedor": mao1, 'perdedor': mao2}
+        return maoT
+
     elif mao2['posicao'] < mao1['posicao']:
-        print('mao 2 venceu')
-        return 'Mão 2 venceu!'
+        maoT = {"title": "Mao 2", "vencedor": mao2, 'perdedor': mao1}
+        return maoT
     else:
         print('empate')
-        return desempate(mao1, mao2)
+        return {"title": "Empate", "vencedor": mao2, 'perdedor': mao1}

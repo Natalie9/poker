@@ -186,12 +186,12 @@ mao10 = [
      'valor': '10'}
 ]
 
-# fazer_verficacao(mao66)
-print(type(mao3))
-# res1 = fazer_verficacao(mao3)
-# res2 = fazer_verficacao(mao66)
+fazer_verficacao(mao2)
+
+res1 = fazer_verficacao(mao3)
+res2 = fazer_verficacao(mao66)
 #
-# vencedora = compara_maos(res1, res2)
+vencedora = compara_maos(res1, res2)
 #
 # print(vencedora)
 

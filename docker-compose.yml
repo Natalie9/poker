@@ -1,0 +1,25 @@
+version: '3'
+services:
+  server:
+    build: .
+    command: python manage.py runserver 0.0.0.0:7000
+    ports:
+      - "7000:7000"
+    networks:
+      - app-network
+
+  webserver:
+    build: ./frontend
+    container_name: webserver
+    command: npm run start
+    ports:
+      - "4000:4000"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+
+      

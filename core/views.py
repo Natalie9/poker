@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import JsonResponse
 from rest_framework.decorators import api_view
 
 from Modelos.teste import fazer_verficacao, compara_maos
@@ -13,4 +13,4 @@ def IndexViewSet(request):
     res2 = fazer_verficacao(list(response['mao2']))
     vencedora = compara_maos(res1, res2)
     print(vencedora)
-    return HttpResponse(vencedora)
+    return JsonResponse(vencedora)
