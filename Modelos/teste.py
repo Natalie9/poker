@@ -49,12 +49,10 @@ def verifica_quantidade_valor(mao):
 
 def verifica_regras(mao):
     # Royal Flush
-
     # maos que tem apenas um nipe
     if mao['qtd_nipes'] == 1:
-
         ##case Royal Flush
-        if mao['cartas_naipe'][0][1] == [1, 10, 11, 12, 13]:
+        if mao['cartas_naipe'][0][1] == [10, 11, 12, 13, 14]:
             mao['tipo_mao'] = 'Royal Flush'
             mao['posicao'] = 1
 
@@ -101,6 +99,7 @@ def verifica_regras(mao):
 
     ##se não entrou em nenhuma regra por naipe e possui 5 valores distintos
     else:
+        print('else')
         if mao['cartas_valor'][4][0] != 14 and mao['cartas_valor'][0][0] + 4 == mao['cartas_valor'][4][0]:
                 mao['tipo_mao'] = 'Sequencia'
                 mao['posicao'] = 6
@@ -148,13 +147,13 @@ def fazer_verficacao(mao):
     ##verifica quantos valores distintos tem
     mao_result['qtd_valor'] = verifica_quantidade_valor(mao_result)
 
+    ##consultando regras
+    mao_result = verifica_regras(mao_result)
 
     ##transoforma valores 11 12 13 1 em valores respectivamente J Q K A
     for i in mao:
         i['valor'] = transforma_valor_numerico(i['valor'])
 
-    ##consultando regras
-    mao_result = verifica_regras(mao_result)
     for i in mao:
         print(i['naipe'], i['valor'])
     print(mao_result['tipo_mao'])
@@ -214,10 +213,10 @@ def desempate(mao1, mao2):
 def compara_maos(mao1, mao2):
     if mao1['posicao'] < mao2['posicao']:
         print('mao 1 venceu')
-        return mao1
+        return 'Mão 1 venceu!'
     elif mao2['posicao'] < mao1['posicao']:
         print('mao 2 venceu')
-        return mao2
+        return 'Mão 2 venceu!'
     else:
         print('empate')
         return desempate(mao1, mao2)
